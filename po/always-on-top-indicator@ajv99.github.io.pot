@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: always-on-top-indicator@ajv99.github.io\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 00:03+0100\n"
+"POT-Creation-Date: 2026-10-08 00:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,11 +74,11 @@ msgid "Corner rounding in pixels"
 msgstr ""
 
 #: prefs.js:140
-msgid "Shortcut"
+msgid "Pinning"
 msgstr ""
 
 #: prefs.js:141
-msgid "Pin or unpin the focused window from the keyboard"
+msgid "Pin or unpin the focused window"
 msgstr ""
 
 #: prefs.js:146
@@ -97,14 +97,30 @@ msgstr ""
 msgid "Click to set a new shortcut"
 msgstr ""
 
-#: prefs.js:180
+#: prefs.js:176
+msgid "Top Bar Button"
+msgstr ""
+
+#: prefs.js:177
+msgid "Click to pin or unpin; right-click opens these settings"
+msgstr ""
+
+#: prefs.js:184
+msgid "Show on All Workspaces"
+msgstr ""
+
+#: prefs.js:185
+msgid "Pinned windows follow you across workspaces"
+msgstr ""
+
+#: prefs.js:196
 msgid "Press a Shortcut"
 msgstr ""
 
-#: prefs.js:181
+#: prefs.js:197
 msgid "Esc to cancel, Backspace to disable"
 msgstr ""
 
-#: prefs.js:187
+#: prefs.js:203
 msgid "Set Shortcut"
 msgstr ""

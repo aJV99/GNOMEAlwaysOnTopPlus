@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Top bar button: a click pins or unpins the focused window, a right-click opens preferences, and the icon is dimmed while the focused window is not pinned. On by default; can be turned off in preferences.
+- "Show on All Workspaces" option (off by default): while a window is pinned it is also placed on all workspaces. Unpinning, turning the option off, or disabling the extension hands the window back; windows the user made sticky themselves are left alone.
 - GitHub Actions workflow that validates the schemas and packs the extension on every push to `master` and pull request, and attaches the bundle to a GitHub release when a `v*` tag is pushed.
 - Translation scaffolding: a `gettext-domain` in `metadata.json`, a template in `po/`, and `make pot` / `make update-po` targets. `make install` and `make pack` compile and bundle any `po/*.po` present. No translations ship yet.
 - Bundled keyboard shortcut that pins or unpins the focused window: `Super+Ctrl+T` by default, stored in the extension's own `toggle-always-on-top` key and active only while the extension is enabled. It can be rebound, disabled, or reset from a new "Shortcut" group in preferences.
@@ -22,6 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Borders hide while the Activities overview is open and restore when it closes.
 
 ### Changed
+- Preferences: the "Shortcut" group is now "Pinning" and also holds the top bar button and all-workspaces switches.
+- Extension description now mentions pinning as well as the border.
 - `make pack` no longer bundles `README.md` and `CHANGELOG.md`, which the extension does not need to run; `extension.js` and `prefs.js` now carry the attribution to the upstream extension that the README held.
 - README features list and roadmap brought up to date.
 - Corner radius now defaults to 16 px (was 0) so a fresh install matches GNOME's rounded windows.

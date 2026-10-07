@@ -1,6 +1,7 @@
 // Fork of "Always On Top Indicator" by perosredo
 // https://github.com/perosredo/gnome-always-on-top-indicator
 
+import Clutter from 'gi://Clutter';
 import St from 'gi://St';
 import Meta from 'gi://Meta';
 import Gio from 'gi://Gio';
@@ -8,10 +9,16 @@ import Shell from 'gi://Shell';
 
 import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
 const INTERFACE_SCHEMA = 'org.gnome.desktop.interface';
 const ACCENT_COLOR_KEY = 'accent-color';
 const TOGGLE_KEYBINDING = 'toggle-always-on-top';
+const PANEL_BUTTON_KEY = 'show-panel-button';
+const STICK_KEY = 'stick-pinned-windows';
+
+// Panel icon opacity while the focused window is not pinned.
+const UNPINNED_ICON_OPACITY = 110;
 
 // GNOME 47+ accent-color enum values, mapped to their libadwaita standalone
 // hex values. Source: libadwaita src/stylesheet/_colors_public.scss.
@@ -96,6 +103,23 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
             () => this._toggleFocusedWindow()
         );
 
+        this._stickPinned = this._settings.get_boolean(STICK_KEY);
+        this._stickChangedId = this._settings.connect(`changed::${STICK_KEY}`, () => {
+            this._stickPinned = this._settings.get_boolean(STICK_KEY);
+            for (const metaWindow of this._windows.keys())
+                this._syncSticky(metaWindow);
+        });
+
+        this._panelButtonChangedId = this._settings.connect(
+            `changed::${PANEL_BUTTON_KEY}`,
+            () => this._syncPanelButton()
+        );
+        this._focusWindowId = global.display.connect(
+            'notify::focus-window',
+            () => this._updatePanelButton()
+        );
+        this._syncPanelButton();
+
         this._windowCreatedId = global.display.connect(
             'window-created',
             (_display, window) => this._setupWindow(window)
@@ -129,7 +153,21 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
             this._settings.disconnect(this._settingsChangedId);
             this._settingsChangedId = null;
         }
+        if (this._stickChangedId) {
+            this._settings.disconnect(this._stickChangedId);
+            this._stickChangedId = null;
+        }
+        if (this._panelButtonChangedId) {
+            this._settings.disconnect(this._panelButtonChangedId);
+            this._panelButtonChangedId = null;
+        }
         this._settings = null;
+
+        if (this._focusWindowId) {
+            global.display.disconnect(this._focusWindowId);
+            this._focusWindowId = null;
+        }
+        this._destroyPanelButton();
 
         if (this._ifaceChangedId) {
             this._ifaceSettings.disconnect(this._ifaceChangedId);
@@ -158,8 +196,12 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
             this._overviewHiddenId = null;
         }
 
-        for (const metaWindow of [...this._windows.keys()])
+        for (const [metaWindow, {stuck}] of [...this._windows]) {
             this._cleanupWindow(metaWindow);
+            // Hand back windows this extension put on all workspaces.
+            if (stuck)
+                metaWindow.unstick();
+        }
         this._windows.clear();
     }
 
@@ -222,6 +264,67 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
             metaWindow.make_above();
     }
 
+    _syncSticky(metaWindow) {
+        const state = this._windows.get(metaWindow);
+        if (!state)
+            return;
+
+        const want = this._stickPinned && metaWindow.is_above();
+        if (want && !metaWindow.on_all_workspaces) {
+            metaWindow.stick();
+            state.stuck = true;
+        } else if (!want && state.stuck) {
+            // Only undo our own stick; a window the user made sticky stays so.
+            metaWindow.unstick();
+            state.stuck = false;
+        }
+    }
+
+    _syncPanelButton() {
+        if (!this._settings.get_boolean(PANEL_BUTTON_KEY)) {
+            this._destroyPanelButton();
+            return;
+        }
+        if (this._panelButton)
+            return;
+
+        this._panelIcon = new St.Icon({
+            icon_name: 'view-pin-symbolic',
+            style_class: 'system-status-icon',
+        });
+        // No menu: a click acts on the focused window directly.
+        this._panelButton = new PanelMenu.Button(0.5, this.metadata.name, true);
+        this._panelButton.add_child(this._panelIcon);
+        this._panelButton.connect('button-press-event', (_actor, event) => {
+            if (event.get_button() === Clutter.BUTTON_SECONDARY)
+                this.openPreferences();
+            else
+                this._toggleFocusedWindow();
+            return Clutter.EVENT_STOP;
+        });
+        Main.panel.addToStatusArea(this.uuid, this._panelButton);
+        this._updatePanelButton();
+    }
+
+    _destroyPanelButton() {
+        this._panelButton?.destroy();
+        this._panelButton = null;
+        this._panelIcon = null;
+    }
+
+    _updatePanelButton() {
+        if (!this._panelIcon)
+            return;
+        const pinned = global.display.focus_window?.is_above() ?? false;
+        this._panelIcon.opacity = pinned ? 255 : UNPINNED_ICON_OPACITY;
+    }
+
+    _onAboveChanged(metaWindow) {
+        this._syncSticky(metaWindow);
+        this._updateWindowBorder(metaWindow);
+        this._updatePanelButton();
+    }
+
     _refreshAll() {
         for (const metaWindow of this._windows.keys())
             this._updateWindowBorder(metaWindow);
@@ -234,13 +337,14 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
             return;
 
         const handlers = {
-            above: metaWindow.connect('notify::above', () => this._updateWindowBorder(metaWindow)),
+            above: metaWindow.connect('notify::above', () => this._onAboveChanged(metaWindow)),
             minimized: metaWindow.connect('notify::minimized', () => this._updateWindowBorder(metaWindow)),
             workspace: metaWindow.connect('workspace-changed', () => this._updateWindowBorder(metaWindow)),
             unmanaged: metaWindow.connect('unmanaged', () => this._cleanupWindow(metaWindow)),
         };
 
-        this._windows.set(metaWindow, {handlers, border: null});
+        this._windows.set(metaWindow, {handlers, border: null, stuck: false});
+        this._syncSticky(metaWindow);
         this._updateWindowBorder(metaWindow);
     }
 

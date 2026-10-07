@@ -34,5 +34,15 @@
       <summary>Toggle always-on-top</summary>
       <description>Keyboard shortcut that pins or unpins the focused window. Empty to disable.</description>
     </key>
+    <key name="show-panel-button" type="b">
+      <default>true</default>
+      <summary>Show top bar button</summary>
+      <description>Show a button in the top bar that pins or unpins the focused window when clicked.</description>
+    </key>
+    <key name="stick-pinned-windows" type="b">
+      <default>false</default>
+      <summary>Show pinned windows on all workspaces</summary>
+      <description>When enabled, a window is also placed on all workspaces while it is always-on-top.</description>
+    </key>
   </schema>
 </schemalist>
