@@ -29,5 +29,10 @@
       <description>Corner radius of the border in pixels.</description>
       <range min="0.0" max="20.0"/>
     </key>
+    <key name="toggle-always-on-top" type="as">
+      <default><![CDATA[['<Super><Control>t']]]></default>
+      <summary>Toggle always-on-top</summary>
+      <description>Keyboard shortcut that pins or unpins the focused window. Empty to disable.</description>
+    </key>
   </schema>
 </schemalist>
