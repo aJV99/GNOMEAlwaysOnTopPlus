@@ -1,6 +1,6 @@
-# Always On Top Indicator+
+# Always On Top+
 
-GNOME Shell extension that draws a coloured border around windows set as always-on-top.
+GNOME Shell extension that pins windows always-on-top and draws a coloured border around them.
 
 > Maintained fork of [perosredo/gnome-always-on-top-indicator](https://github.com/perosredo/gnome-always-on-top-indicator). Not yet published on extensions.gnome.org; install from source (below).
 
@@ -8,6 +8,10 @@ GNOME Shell extension that draws a coloured border around windows set as always-
 
 - Visible border on any window you set to always-on-top
 - `Super+Ctrl+T` pins or unpins the focused window; rebind or disable it in preferences
+- Top bar button (optional): click pins or unpins the focused window, middle-click toggles all workspaces, right-click opens preferences
+- The button's icon shows whether the focused window is pinned and whether it is on all workspaces
+- Choose which part of the top bar the button sits in, and its order there
+- Optionally keep pinned windows on all workspaces automatically
 - Border colour follows the GNOME accent colour (GNOME 47+), or pick your own
 - Configurable thickness (0.25–10 px), opacity, and corner radius (0–20 px)
 - Everything lives in the preferences dialog — no config files to touch
