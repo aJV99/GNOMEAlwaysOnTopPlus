@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Translation scaffolding: a `gettext-domain` in `metadata.json`, a template in `po/`, and `make pot` / `make update-po` targets. `make install` and `make pack` compile and bundle any `po/*.po` present. No translations ship yet.
 - Bundled keyboard shortcut that pins or unpins the focused window: `Super+Ctrl+T` by default, stored in the extension's own `toggle-always-on-top` key and active only while the extension is enabled. It can be rebound, disabled, or reset from a new "Shortcut" group in preferences.
 - GNOME 50 compatibility declared in `metadata.json` (supports Fedora 44).
 - GNOME 49 compatibility declared in `metadata.json` (fixes Fedora 43).
