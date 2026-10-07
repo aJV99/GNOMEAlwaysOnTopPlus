@@ -1,4 +1,4 @@
-# Always On Top Indicator+
+# Always On Top+
 
 GNOME Shell extension that pins windows always-on-top and draws a coloured border around them.
 
