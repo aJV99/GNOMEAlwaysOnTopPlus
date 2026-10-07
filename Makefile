@@ -3,7 +3,7 @@ DOMAIN         := $(UUID)
 EXTENSIONS_DIR := $(HOME)/.local/share/gnome-shell/extensions
 INSTALL_DIR    := $(EXTENSIONS_DIR)/$(UUID)
 
-SOURCES := extension.js prefs.js metadata.json stylesheet.css
+SOURCES := extension.js prefs.js metadata.json stylesheet.css icons
 SCHEMA_SRC := $(wildcard schemas/*.gschema.xml)
 SCHEMA_COMPILED := schemas/gschemas.compiled
 
@@ -47,6 +47,7 @@ locale/%/LC_MESSAGES/$(DOMAIN).mo: po/%.po
 pack: schemas
 	gnome-extensions pack --force \
 		--extra-source=LICENSE \
+		--extra-source=icons \
 		.
 
 install: schemas translations

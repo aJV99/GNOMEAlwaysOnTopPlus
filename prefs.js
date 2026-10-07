@@ -172,12 +172,37 @@ export default class AlwaysOnTopIndicatorPreferences extends ExtensionPreference
         shortcutRow.connect('activated', () => this._captureShortcut(window, settings));
         pinGroup.add(shortcutRow);
 
-        const panelButtonRow = new Adw.SwitchRow({
+        const panelButtonRow = new Adw.ExpanderRow({
             title: _('Top Bar Button'),
-            subtitle: _('Click to pin or unpin; right-click opens these settings'),
+            subtitle: _('Click pins or unpins, middle-click toggles all workspaces, right-click opens these settings'),
+            show_enable_switch: true,
         });
         pinGroup.add(panelButtonRow);
-        settings.bind('show-panel-button', panelButtonRow, 'active',
+        settings.bind('show-panel-button', panelButtonRow, 'enable-expansion',
+            Gio.SettingsBindFlags.DEFAULT);
+
+        const positions = ['left', 'center', 'right'];
+        const positionRow = new Adw.ComboRow({
+            title: _('Position'),
+            model: Gtk.StringList.new([_('Left'), _('Centre'), _('Right')]),
+            selected: positions.indexOf(settings.get_string('panel-button-position')),
+        });
+        positionRow.connect('notify::selected', () => {
+            settings.set_string('panel-button-position', positions[positionRow.selected]);
+        });
+        panelButtonRow.add_row(positionRow);
+
+        const indexRow = new Adw.SpinRow({
+            title: _('Order'),
+            subtitle: _('Place among the other items there; 0 is first'),
+            adjustment: new Gtk.Adjustment({
+                lower: 0,
+                upper: 20,
+                step_increment: 1,
+            }),
+        });
+        panelButtonRow.add_row(indexRow);
+        settings.bind('panel-button-index', indexRow, 'value',
             Gio.SettingsBindFlags.DEFAULT);
 
         const stickRow = new Adw.SwitchRow({

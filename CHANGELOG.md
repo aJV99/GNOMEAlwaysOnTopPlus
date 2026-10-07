@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Top bar button: a click pins or unpins the focused window, a right-click opens preferences, and the icon is dimmed while the focused window is not pinned. On by default; can be turned off in preferences.
+- Top bar button: a click pins or unpins the focused window, a middle-click toggles it on all workspaces, and a right-click opens preferences. On by default; can be turned off in preferences.
+- The button's icon reflects the focused window: outline pin when unpinned, filled when pinned, a dot when it is on all workspaces, and dimmed when no pinnable window is focused.
+- Top bar button placement: left, centre or right section of the top bar, and its order within that section.
 - "Show on All Workspaces" option (off by default): while a window is pinned it is also placed on all workspaces. Unpinning, turning the option off, or disabling the extension hands the window back; windows the user made sticky themselves are left alone.
 - GitHub Actions workflow that validates the schemas and packs the extension on every push to `master` and pull request, and attaches the bundle to a GitHub release when a `v*` tag is pushed.
 - Translation scaffolding: a `gettext-domain` in `metadata.json`, a template in `po/`, and `make pot` / `make update-po` targets. `make install` and `make pack` compile and bundle any `po/*.po` present. No translations ship yet.
