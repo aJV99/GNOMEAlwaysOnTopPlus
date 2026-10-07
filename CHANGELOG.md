@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Borders hide while the Activities overview is open and restore when it closes.
 
 ### Changed
+- Corner radius now defaults to 16 px (was 0) so a fresh install matches GNOME's rounded windows.
+- The border's static styling moved into `stylesheet.css`; only the settings-driven width, colour, opacity and radius remain inline.
 - Renamed the extension to "Always On Top Indicator+" so it is distinguishable from the upstream "Always On Top Indicator" listing. The UUID and GSettings schema are unchanged.
 - Adopted the fork's own identity: UUID is now `always-on-top-indicator@ajv99.github.io`, `url` points at this repository, and the GSettings schema is `org.gnome.shell.extensions.always-on-top-indicator-maintained` (own dconf path, so the fork no longer shares stored settings with the upstream extension).
 - Borders are now parented onto each window's own `Meta.WindowActor` (via `get_compositor_private()`) instead of `Main.layoutManager.addChrome`. The border moves, stacks, and animates together with its window — including workspace-switch and minimise animations — rather than chasing it from the chrome layer. Geometry is computed in window-actor-local coordinates, translating the frame rect against the buffer rect so the border hugs the visible window rather than any client-side-decoration shadow. As a non-reactive child of the window actor the overlay inherently cannot steal input or affect the work area, so the old `addChrome` opt-outs are no longer needed. Geometry updates are skipped while a window reports a degenerate frame rect, avoiding Clutter allocation warnings during teardown.

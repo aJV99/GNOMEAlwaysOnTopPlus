@@ -2,7 +2,7 @@ UUID           := always-on-top-indicator@ajv99.github.io
 EXTENSIONS_DIR := $(HOME)/.local/share/gnome-shell/extensions
 INSTALL_DIR    := $(EXTENSIONS_DIR)/$(UUID)
 
-SOURCES := extension.js prefs.js metadata.json
+SOURCES := extension.js prefs.js metadata.json stylesheet.css
 SCHEMA_SRC := $(wildcard schemas/*.gschema.xml)
 SCHEMA_COMPILED := schemas/gschemas.compiled
 
