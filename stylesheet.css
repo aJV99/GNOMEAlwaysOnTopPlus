@@ -1,0 +1,4 @@
+/* Width, colour, opacity and radius are settings-driven and applied inline. */
+.always-on-top-indicator-border {
+    background-color: transparent;
+}

@@ -1,12 +1,17 @@
+// Fork of "Always On Top Indicator" by perosredo
+// https://github.com/perosredo/gnome-always-on-top-indicator
+
 import St from 'gi://St';
 import Meta from 'gi://Meta';
 import Gio from 'gi://Gio';
+import Shell from 'gi://Shell';
 
 import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 const INTERFACE_SCHEMA = 'org.gnome.desktop.interface';
 const ACCENT_COLOR_KEY = 'accent-color';
+const TOGGLE_KEYBINDING = 'toggle-always-on-top';
 
 // GNOME 47+ accent-color enum values, mapped to their libadwaita standalone
 // hex values. Source: libadwaita src/stylesheet/_colors_public.scss.
@@ -83,6 +88,14 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
             );
         }
 
+        Main.wm.addKeybinding(
+            TOGGLE_KEYBINDING,
+            this._settings,
+            Meta.KeyBindingFlags.IGNORE_AUTOREPEAT,
+            Shell.ActionMode.NORMAL,
+            () => this._toggleFocusedWindow()
+        );
+
         this._windowCreatedId = global.display.connect(
             'window-created',
             (_display, window) => this._setupWindow(window)
@@ -110,6 +123,8 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
     }
 
     disable() {
+        Main.wm.removeKeybinding(TOGGLE_KEYBINDING);
+
         if (this._settingsChangedId) {
             this._settings.disconnect(this._settingsChangedId);
             this._settingsChangedId = null;
@@ -196,6 +211,17 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
         }
     }
 
+    _toggleFocusedWindow() {
+        const metaWindow = global.display.focus_window;
+        if (!metaWindow || !SUPPORTED_WINDOW_TYPES.has(metaWindow.get_window_type()))
+            return;
+
+        if (metaWindow.is_above())
+            metaWindow.unmake_above();
+        else
+            metaWindow.make_above();
+    }
+
     _refreshAll() {
         for (const metaWindow of this._windows.keys())
             this._updateWindowBorder(metaWindow);
@@ -264,8 +290,7 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
         const {r, g, b} = this._borderColor;
         const color = `rgba(${r}, ${g}, ${b}, ${this._borderOpacity})`;
         return `border: ${this._borderWidth}px solid ${color};` +
-               `border-radius: ${this._cornerRadius}px;` +
-               `background-color: transparent;`;
+               `border-radius: ${this._cornerRadius}px;`;
     }
 
     _applyGeometry(actor, metaWindow) {
@@ -304,6 +329,7 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
             // Named so it is identifiable in Clutter allocation warnings
             // (otherwise it logs as an anonymous "unnamed [StBin]").
             name: 'always-on-top-indicator-border',
+            style_class: 'always-on-top-indicator-border',
             reactive: false,
             can_focus: false,
             track_hover: false,

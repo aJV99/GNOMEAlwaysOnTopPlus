@@ -4,6 +4,7 @@ schemas/gschemas.compiled
 
 # Translations
 po/*.mo
+locale/
 
 # Editor / OS
 .vscode/

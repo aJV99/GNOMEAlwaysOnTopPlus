@@ -1,3 +1,6 @@
+// Fork of "Always On Top Indicator" by perosredo
+// https://github.com/perosredo/gnome-always-on-top-indicator
+
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
 import Gdk from 'gi://Gdk';
@@ -6,6 +9,7 @@ import Adw from 'gi://Adw';
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
 const DEFAULT_COLOR_HEX = '#bd93f9';
+const TOGGLE_KEYBINDING = 'toggle-always-on-top';
 
 function hexToRgba(hex) {
     const rgba = new Gdk.RGBA();
@@ -131,5 +135,82 @@ export default class AlwaysOnTopIndicatorPreferences extends ExtensionPreference
         group.add(radiusRow);
         settings.bind('corner-radius', radiusRow, 'value',
             Gio.SettingsBindFlags.DEFAULT);
+
+        const shortcutGroup = new Adw.PreferencesGroup({
+            title: _('Shortcut'),
+            description: _('Pin or unpin the focused window from the keyboard'),
+        });
+        page.add(shortcutGroup);
+
+        const shortcutLabel = new Gtk.ShortcutLabel({
+            disabled_text: _('Disabled'),
+            valign: Gtk.Align.CENTER,
+        });
+        const updateShortcutLabel = () => {
+            shortcutLabel.accelerator = settings.get_strv(TOGGLE_KEYBINDING)[0] ?? '';
+        };
+        updateShortcutLabel();
+        const shortcutChangedId = settings.connect(
+            `changed::${TOGGLE_KEYBINDING}`, updateShortcutLabel);
+        window.connect('close-request', () => settings.disconnect(shortcutChangedId));
+
+        const resetButton = new Gtk.Button({
+            icon_name: 'edit-undo-symbolic',
+            tooltip_text: _('Reset to default'),
+            valign: Gtk.Align.CENTER,
+            css_classes: ['flat'],
+        });
+        resetButton.connect('clicked', () => settings.reset(TOGGLE_KEYBINDING));
+
+        const shortcutRow = new Adw.ActionRow({
+            title: _('Toggle Always on Top'),
+            subtitle: _('Click to set a new shortcut'),
+            activatable: true,
+        });
+        shortcutRow.add_suffix(shortcutLabel);
+        shortcutRow.add_suffix(resetButton);
+        shortcutRow.connect('activated', () => this._captureShortcut(window, settings));
+        shortcutGroup.add(shortcutRow);
+    }
+
+    _captureShortcut(parent, settings) {
+        const view = new Adw.ToolbarView({
+            content: new Adw.StatusPage({
+                icon_name: 'preferences-desktop-keyboard-shortcuts-symbolic',
+                title: _('Press a Shortcut'),
+                description: _('Esc to cancel, Backspace to disable'),
+            }),
+        });
+        view.add_top_bar(new Adw.HeaderBar());
+
+        const dialog = new Adw.Window({
+            title: _('Set Shortcut'),
+            modal: true,
+            transient_for: parent,
+            default_width: 400,
+            default_height: 300,
+            content: view,
+        });
+
+        const controller = new Gtk.EventControllerKey();
+        controller.connect('key-pressed', (_controller, keyval, _keycode, state) => {
+            const mask = state & Gtk.accelerator_get_default_mod_mask();
+
+            if (!mask && keyval === Gdk.KEY_Escape) {
+                dialog.close();
+            } else if (!mask && keyval === Gdk.KEY_BackSpace) {
+                settings.set_strv(TOGGLE_KEYBINDING, []);
+                dialog.close();
+            } else if (mask && Gtk.accelerator_valid(keyval, mask)) {
+                // Lone modifiers and unmodified keys fall through and keep
+                // the dialog waiting for a usable combination.
+                const accelerator = Gtk.accelerator_name(Gdk.keyval_to_lower(keyval), mask);
+                settings.set_strv(TOGGLE_KEYBINDING, [accelerator]);
+                dialog.close();
+            }
+            return Gdk.EVENT_STOP;
+        });
+        dialog.add_controller(controller);
+        dialog.present();
     }
 }

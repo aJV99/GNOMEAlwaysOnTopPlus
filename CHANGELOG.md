@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- GitHub Actions workflow that validates the schemas and packs the extension on every push to `master` and pull request, and attaches the bundle to a GitHub release when a `v*` tag is pushed.
+- Translation scaffolding: a `gettext-domain` in `metadata.json`, a template in `po/`, and `make pot` / `make update-po` targets. `make install` and `make pack` compile and bundle any `po/*.po` present. No translations ship yet.
+- Bundled keyboard shortcut that pins or unpins the focused window: `Super+Ctrl+T` by default, stored in the extension's own `toggle-always-on-top` key and active only while the extension is enabled. It can be rebound, disabled, or reset from a new "Shortcut" group in preferences.
 - GNOME 50 compatibility declared in `metadata.json` (supports Fedora 44).
 - GNOME 49 compatibility declared in `metadata.json` (fixes Fedora 43).
 - Configurable border colour via a colour picker in preferences (hex; default `#bd93f9`).
@@ -19,6 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Borders hide while the Activities overview is open and restore when it closes.
 
 ### Changed
+- `make pack` no longer bundles `README.md` and `CHANGELOG.md`, which the extension does not need to run; `extension.js` and `prefs.js` now carry the attribution to the upstream extension that the README held.
+- README features list and roadmap brought up to date.
+- Corner radius now defaults to 16 px (was 0) so a fresh install matches GNOME's rounded windows.
+- The border's static styling moved into `stylesheet.css`; only the settings-driven width, colour, opacity and radius remain inline.
+- Renamed the extension to "Always On Top Indicator+" so it is distinguishable from the upstream "Always On Top Indicator" listing. The UUID and GSettings schema are unchanged.
+- Adopted the fork's own identity: UUID is now `always-on-top-indicator@ajv99.github.io`, `url` points at this repository, and the GSettings schema is `org.gnome.shell.extensions.always-on-top-indicator-maintained` (own dconf path, so the fork no longer shares stored settings with the upstream extension).
 - Borders are now parented onto each window's own `Meta.WindowActor` (via `get_compositor_private()`) instead of `Main.layoutManager.addChrome`. The border moves, stacks, and animates together with its window — including workspace-switch and minimise animations — rather than chasing it from the chrome layer. Geometry is computed in window-actor-local coordinates, translating the frame rect against the buffer rect so the border hugs the visible window rather than any client-side-decoration shadow. As a non-reactive child of the window actor the overlay inherently cannot steal input or affect the work area, so the old `addChrome` opt-outs are no longer needed. Geometry updates are skipped while a window reports a degenerate frame rect, avoiding Clutter allocation warnings during teardown.
 - Settings changes now flow through a single `changed` handler that reloads every key and restyles live borders, replacing the thickness-only handler. The handler short-circuits when no border-affecting value actually changed, and only re-applies window geometry when thickness changed.
 - Custom colour picker is hidden in preferences while the accent-colour toggle is on, and the accent toggle shows as off (with its "Requires GNOME 47 or newer" hint) on older GNOME versions — so the UI always reflects the colour actually driving the border.
