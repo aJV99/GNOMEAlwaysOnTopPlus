@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Borders hide while the Activities overview is open and restore when it closes.
 
 ### Changed
+- `make pack` no longer bundles `README.md` and `CHANGELOG.md`, which the extension does not need to run; `extension.js` and `prefs.js` now carry the attribution to the upstream extension that the README held.
+- README features list and roadmap brought up to date.
 - Corner radius now defaults to 16 px (was 0) so a fresh install matches GNOME's rounded windows.
 - The border's static styling moved into `stylesheet.css`; only the settings-driven width, colour, opacity and radius remain inline.
 - Renamed the extension to "Always On Top Indicator+" so it is distinguishable from the upstream "Always On Top Indicator" listing. The UUID and GSettings schema are unchanged.

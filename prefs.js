@@ -1,3 +1,6 @@
+// Fork of "Always On Top Indicator" by perosredo
+// https://github.com/perosredo/gnome-always-on-top-indicator
+
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
 import Gdk from 'gi://Gdk';

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: always-on-top-indicator@ajv99.github.io\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 00:01+0100\n"
+"POT-Creation-Date: 2026-10-08 00:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,94 +17,94 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: prefs.js:28
+#: prefs.js:31
 msgid "General"
 msgstr ""
 
-#: prefs.js:38
+#: prefs.js:41
 msgid "Appearance"
 msgstr ""
 
-#: prefs.js:39
+#: prefs.js:42
 msgid "Configure the appearance of the border"
 msgstr ""
 
-#: prefs.js:44
+#: prefs.js:47
 msgid "Use System Accent Colour"
 msgstr ""
 
-#: prefs.js:46
+#: prefs.js:49
 msgid "Match the GNOME desktop accent colour."
 msgstr ""
 
-#: prefs.js:47
+#: prefs.js:50
 msgid "Requires GNOME 47 or newer."
 msgstr ""
 
-#: prefs.js:62
+#: prefs.js:65
 msgid "Border Thickness"
 msgstr ""
 
-#: prefs.js:63
+#: prefs.js:66
 msgid "Thickness of the border in pixels"
 msgstr ""
 
-#: prefs.js:93
+#: prefs.js:96
 msgid "Border Color"
 msgstr ""
 
-#: prefs.js:94
+#: prefs.js:97
 msgid "Used when the system accent colour is disabled."
 msgstr ""
 
-#: prefs.js:105
+#: prefs.js:108
 msgid "Border Opacity"
 msgstr ""
 
-#: prefs.js:106
+#: prefs.js:109
 msgid "0 (transparent) to 1 (fully opaque)"
 msgstr ""
 
-#: prefs.js:121
+#: prefs.js:124
 msgid "Corner Radius"
 msgstr ""
 
-#: prefs.js:122
+#: prefs.js:125
 msgid "Corner rounding in pixels"
 msgstr ""
 
-#: prefs.js:137
+#: prefs.js:140
 msgid "Shortcut"
 msgstr ""
 
-#: prefs.js:138
+#: prefs.js:141
 msgid "Pin or unpin the focused window from the keyboard"
 msgstr ""
 
-#: prefs.js:143
+#: prefs.js:146
 msgid "Disabled"
 msgstr ""
 
-#: prefs.js:156
+#: prefs.js:159
 msgid "Reset to default"
 msgstr ""
 
-#: prefs.js:163
+#: prefs.js:166
 msgid "Toggle Always on Top"
 msgstr ""
 
-#: prefs.js:164
+#: prefs.js:167
 msgid "Click to set a new shortcut"
 msgstr ""
 
-#: prefs.js:177
+#: prefs.js:180
 msgid "Press a Shortcut"
 msgstr ""
 
-#: prefs.js:178
+#: prefs.js:181
 msgid "Esc to cancel, Backspace to disable"
 msgstr ""
 
-#: prefs.js:184
+#: prefs.js:187
 msgid "Set Shortcut"
 msgstr ""

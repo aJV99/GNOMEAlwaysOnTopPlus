@@ -46,10 +46,7 @@ locale/%/LC_MESSAGES/$(DOMAIN).mo: po/%.po
 
 pack: schemas
 	gnome-extensions pack --force \
-		$(if $(PO_FILES),--podir=po) \
-		--extra-source=README.md \
 		--extra-source=LICENSE \
-		--extra-source=CHANGELOG.md \
 		.
 
 install: schemas translations
