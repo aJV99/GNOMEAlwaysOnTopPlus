@@ -97,11 +97,13 @@ make clean      # remove build artifacts
 
 ### Translating
 
-Start a new language from the template (French shown), then translate the `msgstr` lines:
+Available: British English, Spanish, Brazilian Portuguese, French, Simplified Chinese and Russian. The non-English ones are machine translations that follow GNOME's own terminology and have not been reviewed by native speakers — corrections are welcome.
+
+Start a new language from the template (German shown), then translate the `msgstr` lines:
 
 ```bash
-msginit --locale=fr.UTF-8 \
-    --input=po/always-on-top-indicator@ajv99.github.io.pot --output=po/fr.po
+msginit --locale=de.UTF-8 \
+    --input=po/always-on-top-indicator@ajv99.github.io.pot --output=po/de.po
 ```
 
 `make install` and `make pack` compile every `po/*.po` automatically. After changing strings in the source, run `make update-po`.

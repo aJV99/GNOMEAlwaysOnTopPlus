@@ -1,0 +1,152 @@
+# Russian translation for Always On Top+.
+# This file is distributed under the same license as the extension.
+# Machine translation, not yet reviewed by a native speaker.
+# Terms follow GNOME's own translations where they exist. Corrections welcome.
+msgid ""
+msgstr ""
+"Project-Id-Version: always-on-top-indicator@ajv99.github.io\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-08 01:15+0100\n"
+"PO-Revision-Date: 2026-10-08 00:00+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: prefs.js:31
+msgid "General"
+msgstr "Общие"
+
+#: prefs.js:41
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: prefs.js:42
+msgid "Configure the appearance of the border"
+msgstr "Настройка внешнего вида рамки"
+
+#: prefs.js:47
+msgid "Use System Accent Color"
+msgstr "Использовать системный акцентный цвет"
+
+#: prefs.js:49
+msgid "Match the GNOME desktop accent color."
+msgstr "Использовать акцентный цвет рабочего стола GNOME."
+
+#: prefs.js:50
+msgid "Requires GNOME 47 or newer."
+msgstr "Требуется GNOME 47 или новее."
+
+#: prefs.js:65
+msgid "Border Thickness"
+msgstr "Толщина рамки"
+
+#: prefs.js:66
+msgid "Thickness of the border in pixels"
+msgstr "Толщина рамки в пикселях"
+
+#: prefs.js:96
+msgid "Border Color"
+msgstr "Цвет рамки"
+
+#: prefs.js:97
+msgid "Used when the system accent color is disabled."
+msgstr "Используется, когда системный акцентный цвет отключён."
+
+#: prefs.js:108
+msgid "Border Opacity"
+msgstr "Непрозрачность рамки"
+
+#: prefs.js:109
+msgid "0 (transparent) to 1 (fully opaque)"
+msgstr "От 0 (прозрачная) до 1 (полностью непрозрачная)"
+
+#: prefs.js:124
+msgid "Corner Radius"
+msgstr "Радиус углов"
+
+#: prefs.js:125
+msgid "Corner rounding in pixels"
+msgstr "Скругление углов в пикселях"
+
+#: prefs.js:140
+msgid "Pinning"
+msgstr "Закрепление"
+
+#: prefs.js:141
+msgid "Pin or unpin the focused window"
+msgstr "Закрепить или открепить активное окно"
+
+#: prefs.js:146
+msgid "Disabled"
+msgstr "Выключено"
+
+#: prefs.js:159
+msgid "Reset to default"
+msgstr "Сбросить на значение по умолчанию"
+
+#: prefs.js:166
+msgid "Toggle Always on Top"
+msgstr "Переключить «Всегда сверху»"
+
+#: prefs.js:167
+msgid "Click to set a new shortcut"
+msgstr "Нажмите, чтобы задать новую комбинацию клавиш"
+
+#: prefs.js:176
+msgid "Top Bar Button"
+msgstr "Кнопка на верхней панели"
+
+#: prefs.js:177
+msgid ""
+"Click pins or unpins, middle-click toggles all workspaces, right-click opens "
+"these settings"
+msgstr ""
+"Щелчок закрепляет или открепляет окно, щелчок средней кнопкой переключает "
+"показ на всех рабочих столах, щелчок правой кнопкой открывает эти настройки"
+
+#: prefs.js:186
+msgid "Position"
+msgstr "Расположение"
+
+#: prefs.js:187
+msgid "Left"
+msgstr "Слева"
+
+#: prefs.js:187
+msgid "Center"
+msgstr "По центру"
+
+#: prefs.js:187
+msgid "Right"
+msgstr "Справа"
+
+#: prefs.js:196
+msgid "Order"
+msgstr "Порядок"
+
+#: prefs.js:197
+msgid "Place among the other items there; 0 is first"
+msgstr "Место среди других элементов этой области; 0 — первое"
+
+#: prefs.js:209
+msgid "Show on All Workspaces"
+msgstr "Показывать на всех рабочих столах"
+
+#: prefs.js:210
+msgid "Pinned windows follow you across workspaces"
+msgstr "Закреплённые окна следуют за вами по рабочим столам"
+
+#: prefs.js:221
+msgid "Press a Shortcut"
+msgstr "Нажмите комбинацию клавиш"
+
+#: prefs.js:222
+msgid "Esc to cancel, Backspace to disable"
+msgstr "Esc — отмена, Backspace — отключить"
+
+#: prefs.js:228
+msgid "Set Shortcut"
+msgstr "Установить комбинацию клавиш"

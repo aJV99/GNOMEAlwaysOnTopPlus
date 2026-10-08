@@ -10,7 +10,7 @@
     <key name="use-accent-color" type="b">
       <default>true</default>
       <summary>Use system accent color</summary>
-      <description>When enabled on GNOME 47+, the border uses the desktop accent colour. Falls back to the custom border colour on older GNOME versions or when this option is turned off.</description>
+      <description>When enabled on GNOME 47+, the border uses the desktop accent color. Falls back to the custom border color on older GNOME versions or when this option is turned off.</description>
     </key>
     <key name="border-color" type="s">
       <default>'#bd93f9'</default>

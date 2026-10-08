@@ -8,12 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Translations: Spanish, Brazilian Portuguese, French, Simplified Chinese and Russian, plus British English. The five non-English ones are machine translations aligned with GNOME's own terminology and have not been reviewed by native speakers.
 - Top bar button: a click pins or unpins the focused window, a middle-click toggles it on all workspaces, and a right-click opens preferences. On by default; can be turned off in preferences.
 - The button's icon reflects the focused window: outline pin when unpinned, filled when pinned, a dot when it is on all workspaces, and dimmed when no pinnable window is focused.
 - Top bar button placement: left, centre or right section of the top bar, and its order within that section.
 - "Show on All Workspaces" option (off by default): while a window is pinned it is also placed on all workspaces. Unpinning, turning the option off, or disabling the extension hands the window back; windows the user made sticky themselves are left alone.
 - GitHub Actions workflow that validates the schemas and packs the extension on every push to `master` and pull request, and attaches the bundle to a GitHub release when a `v*` tag is pushed.
-- Translation scaffolding: a `gettext-domain` in `metadata.json`, a template in `po/`, and `make pot` / `make update-po` targets. `make install` and `make pack` compile and bundle any `po/*.po` present. No translations ship yet.
+- Translation scaffolding: a `gettext-domain` in `metadata.json`, a template in `po/`, and `make pot` / `make update-po` targets. `make install` and `make pack` compile and bundle any `po/*.po` present.
 - Bundled keyboard shortcut that pins or unpins the focused window: `Super+Ctrl+T` by default, stored in the extension's own `toggle-always-on-top` key and active only while the extension is enabled. It can be rebound, disabled, or reset from a new "Shortcut" group in preferences.
 - GNOME 50 compatibility declared in `metadata.json` (supports Fedora 44).
 - GNOME 49 compatibility declared in `metadata.json` (fixes Fedora 43).
@@ -26,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Borders hide while the Activities overview is open and restore when it closes.
 
 ### Changed
+- Interface text now uses one spelling throughout (US English, the GNOME convention for source strings); British spellings are provided by the `en_GB` translation.
 - Preferences: the "Shortcut" group is now "Pinning" and also holds the top bar button and all-workspaces switches.
 - Extension description now mentions pinning as well as the border.
 - `make pack` no longer bundles `README.md` and `CHANGELOG.md`, which the extension does not need to run; `extension.js` and `prefs.js` now carry the attribution to the upstream extension that the README held.
