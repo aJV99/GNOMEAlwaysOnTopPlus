@@ -321,7 +321,7 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
         // No menu: a click acts on the focused window directly.
         this._panelButton = new PanelMenu.Button(0.5, this.metadata.name, true);
         this._panelButton.add_child(this._panelIcon);
-        this._panelButton.connect('button-press-event', (_actor, event) => {
+        this._panelPressId = this._panelButton.connect('button-press-event', (_actor, event) => {
             const button = event.get_button();
             if (button === Clutter.BUTTON_SECONDARY)
                 this.openPreferences();
@@ -341,9 +341,15 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
     }
 
     _destroyPanelButton() {
+        if (this._panelPressId) {
+            this._panelButton.disconnect(this._panelPressId);
+            this._panelPressId = null;
+        }
+        // Icon first: destroying the button would dispose it as a child.
+        this._panelIcon?.destroy();
+        this._panelIcon = null;
         this._panelButton?.destroy();
         this._panelButton = null;
-        this._panelIcon = null;
         this._panelIcons = null;
     }
 

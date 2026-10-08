@@ -49,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README now documents enabling the extension via `gnome-extensions enable …`.
 
 ### Fixed
+- The top bar button's click handler is now disconnected and its icon destroyed explicitly on disable, as the extensions.gnome.org static analyzer (Shexli) expects.
 - Border no longer persists on other workspaces after switching away from an always-on-top window.
 - `disable()` iterates a snapshot of tracked windows instead of mutating the map mid-iteration.
 
