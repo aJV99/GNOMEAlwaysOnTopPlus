@@ -1,152 +1,151 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the always-on-top-indicator@ajv99.github.io package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Chinese (China) translation for Always On Top+.
+# This file is distributed under the same license as the extension.
+# Machine translation, not yet reviewed by a native speaker.
+# Terms follow GNOME's own translations where they exist. Corrections welcome.
 msgid ""
 msgstr ""
 "Project-Id-Version: always-on-top-indicator@ajv99.github.io\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-08 01:15+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2026-10-08 00:00+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: prefs.js:31
 msgid "General"
-msgstr ""
+msgstr "常规"
 
 #: prefs.js:41
 msgid "Appearance"
-msgstr ""
+msgstr "外观"
 
 #: prefs.js:42
 msgid "Configure the appearance of the border"
-msgstr ""
+msgstr "配置边框的外观"
 
 #: prefs.js:47
 msgid "Use System Accent Color"
-msgstr ""
+msgstr "使用系统强调色"
 
 #: prefs.js:49
 msgid "Match the GNOME desktop accent color."
-msgstr ""
+msgstr "与 GNOME 桌面的强调色保持一致。"
 
 #: prefs.js:50
 msgid "Requires GNOME 47 or newer."
-msgstr ""
+msgstr "需要 GNOME 47 或更高版本。"
 
 #: prefs.js:65
 msgid "Border Thickness"
-msgstr ""
+msgstr "边框粗细"
 
 #: prefs.js:66
 msgid "Thickness of the border in pixels"
-msgstr ""
+msgstr "边框粗细（像素）"
 
 #: prefs.js:96
 msgid "Border Color"
-msgstr ""
+msgstr "边框颜色"
 
 #: prefs.js:97
 msgid "Used when the system accent color is disabled."
-msgstr ""
+msgstr "未使用系统强调色时采用。"
 
 #: prefs.js:108
 msgid "Border Opacity"
-msgstr ""
+msgstr "边框不透明度"
 
 #: prefs.js:109
 msgid "0 (transparent) to 1 (fully opaque)"
-msgstr ""
+msgstr "0（透明）到 1（完全不透明）"
 
 #: prefs.js:124
 msgid "Corner Radius"
-msgstr ""
+msgstr "圆角半径"
 
 #: prefs.js:125
 msgid "Corner rounding in pixels"
-msgstr ""
+msgstr "圆角大小（像素）"
 
 #: prefs.js:140
 msgid "Pinning"
-msgstr ""
+msgstr "窗口置顶"
 
 #: prefs.js:141
 msgid "Pin or unpin the focused window"
-msgstr ""
+msgstr "置顶或取消置顶当前聚焦的窗口"
 
 #: prefs.js:146
 msgid "Disabled"
-msgstr ""
+msgstr "已禁用"
 
 #: prefs.js:159
 msgid "Reset to default"
-msgstr ""
+msgstr "重置为默认值"
 
 #: prefs.js:166
 msgid "Toggle Always on Top"
-msgstr ""
+msgstr "切换“置顶”"
 
 #: prefs.js:167
 msgid "Click to set a new shortcut"
-msgstr ""
+msgstr "点击以设置新的快捷键"
 
 #: prefs.js:176
 msgid "Top Bar Button"
-msgstr ""
+msgstr "顶栏按钮"
 
 #: prefs.js:177
 msgid ""
 "Click pins or unpins, middle-click toggles all workspaces, right-click opens "
 "these settings"
 msgstr ""
+"左键点击置顶或取消置顶，中键点击切换是否显示在所有工作区，右键点击打开此设置"
 
 #: prefs.js:186
 msgid "Position"
-msgstr ""
+msgstr "位置"
 
 #: prefs.js:187
 msgid "Left"
-msgstr ""
+msgstr "左侧"
 
 #: prefs.js:187
 msgid "Center"
-msgstr ""
+msgstr "中间"
 
 #: prefs.js:187
 msgid "Right"
-msgstr ""
+msgstr "右侧"
 
 #: prefs.js:196
 msgid "Order"
-msgstr ""
+msgstr "顺序"
 
 #: prefs.js:197
 msgid "Place among the other items there; 0 is first"
-msgstr ""
+msgstr "在该区域其他项目中的位置；0 为最前"
 
 #: prefs.js:209
 msgid "Show on All Workspaces"
-msgstr ""
+msgstr "显示在所有工作区"
 
 #: prefs.js:210
 msgid "Pinned windows follow you across workspaces"
-msgstr ""
+msgstr "置顶的窗口会跟随您到各个工作区"
 
 #: prefs.js:221
 msgid "Press a Shortcut"
-msgstr ""
+msgstr "按下快捷键"
 
 #: prefs.js:222
 msgid "Esc to cancel, Backspace to disable"
-msgstr ""
+msgstr "按 Esc 取消，按 Backspace 禁用"
 
 #: prefs.js:228
 msgid "Set Shortcut"
-msgstr ""
+msgstr "设置快捷键"

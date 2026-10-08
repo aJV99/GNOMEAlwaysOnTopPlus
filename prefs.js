@@ -44,9 +44,9 @@ export default class AlwaysOnTopIndicatorPreferences extends ExtensionPreference
         page.add(group);
 
         const accentRow = new Adw.SwitchRow({
-            title: _('Use System Accent Colour'),
+            title: _('Use System Accent Color'),
             subtitle: accentColorAvailable
-                ? _('Match the GNOME desktop accent colour.')
+                ? _('Match the GNOME desktop accent color.')
                 : _('Requires GNOME 47 or newer.'),
             sensitive: accentColorAvailable,
         });
@@ -56,7 +56,7 @@ export default class AlwaysOnTopIndicatorPreferences extends ExtensionPreference
                 Gio.SettingsBindFlags.DEFAULT);
         } else {
             // Key exists in our schema but cannot take effect on this GNOME
-            // version; present it as off so the UI matches the colour that
+            // version; present it as off so the UI matches the color that
             // actually drives the border.
             accentRow.active = false;
         }
@@ -94,7 +94,7 @@ export default class AlwaysOnTopIndicatorPreferences extends ExtensionPreference
 
         const colorRow = new Adw.ActionRow({
             title: _('Border Color'),
-            subtitle: _('Used when the system accent colour is disabled.'),
+            subtitle: _('Used when the system accent color is disabled.'),
             activatable_widget: colorButton,
         });
         colorRow.add_suffix(colorButton);
@@ -184,7 +184,7 @@ export default class AlwaysOnTopIndicatorPreferences extends ExtensionPreference
         const positions = ['left', 'center', 'right'];
         const positionRow = new Adw.ComboRow({
             title: _('Position'),
-            model: Gtk.StringList.new([_('Left'), _('Centre'), _('Right')]),
+            model: Gtk.StringList.new([_('Left'), _('Center'), _('Right')]),
             selected: positions.indexOf(settings.get_string('panel-button-position')),
         });
         positionRow.connect('notify::selected', () => {

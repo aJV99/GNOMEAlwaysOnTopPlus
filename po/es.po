@@ -1,152 +1,152 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the always-on-top-indicator@ajv99.github.io package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Spanish translation for Always On Top+.
+# This file is distributed under the same license as the extension.
+# Machine translation, not yet reviewed by a native speaker.
+# Terms follow GNOME's own translations where they exist. Corrections welcome.
 msgid ""
 msgstr ""
 "Project-Id-Version: always-on-top-indicator@ajv99.github.io\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-08 01:15+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2026-10-08 00:00+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: prefs.js:31
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: prefs.js:41
 msgid "Appearance"
-msgstr ""
+msgstr "Apariencia"
 
 #: prefs.js:42
 msgid "Configure the appearance of the border"
-msgstr ""
+msgstr "Configurar la apariencia del borde"
 
 #: prefs.js:47
 msgid "Use System Accent Color"
-msgstr ""
+msgstr "Usar el color de resaltado del sistema"
 
 #: prefs.js:49
 msgid "Match the GNOME desktop accent color."
-msgstr ""
+msgstr "Usa el color de resaltado del escritorio GNOME."
 
 #: prefs.js:50
 msgid "Requires GNOME 47 or newer."
-msgstr ""
+msgstr "Requiere GNOME 47 o posterior."
 
 #: prefs.js:65
 msgid "Border Thickness"
-msgstr ""
+msgstr "Grosor del borde"
 
 #: prefs.js:66
 msgid "Thickness of the border in pixels"
-msgstr ""
+msgstr "Grosor del borde en píxeles"
 
 #: prefs.js:96
 msgid "Border Color"
-msgstr ""
+msgstr "Color del borde"
 
 #: prefs.js:97
 msgid "Used when the system accent color is disabled."
-msgstr ""
+msgstr "Se usa cuando el color de resaltado del sistema está desactivado."
 
 #: prefs.js:108
 msgid "Border Opacity"
-msgstr ""
+msgstr "Opacidad del borde"
 
 #: prefs.js:109
 msgid "0 (transparent) to 1 (fully opaque)"
-msgstr ""
+msgstr "De 0 (transparente) a 1 (totalmente opaco)"
 
 #: prefs.js:124
 msgid "Corner Radius"
-msgstr ""
+msgstr "Radio de las esquinas"
 
 #: prefs.js:125
 msgid "Corner rounding in pixels"
-msgstr ""
+msgstr "Redondeo de las esquinas en píxeles"
 
 #: prefs.js:140
 msgid "Pinning"
-msgstr ""
+msgstr "Fijar ventanas"
 
 #: prefs.js:141
 msgid "Pin or unpin the focused window"
-msgstr ""
+msgstr "Fijar o dejar de fijar la ventana activa"
 
 #: prefs.js:146
 msgid "Disabled"
-msgstr ""
+msgstr "Desactivado"
 
 #: prefs.js:159
 msgid "Reset to default"
-msgstr ""
+msgstr "Restablecer el valor predeterminado"
 
 #: prefs.js:166
 msgid "Toggle Always on Top"
-msgstr ""
+msgstr "Activar o desactivar «Siempre encima»"
 
 #: prefs.js:167
 msgid "Click to set a new shortcut"
-msgstr ""
+msgstr "Pulse para establecer un atajo nuevo"
 
 #: prefs.js:176
 msgid "Top Bar Button"
-msgstr ""
+msgstr "Botón de la barra superior"
 
 #: prefs.js:177
 msgid ""
 "Click pins or unpins, middle-click toggles all workspaces, right-click opens "
 "these settings"
 msgstr ""
+"Pulsar fija o deja de fijar; la pulsación central alterna entre todas las "
+"áreas de trabajo; la pulsación derecha abre esta configuración"
 
 #: prefs.js:186
 msgid "Position"
-msgstr ""
+msgstr "Posición"
 
 #: prefs.js:187
 msgid "Left"
-msgstr ""
+msgstr "Izquierda"
 
 #: prefs.js:187
 msgid "Center"
-msgstr ""
+msgstr "Centro"
 
 #: prefs.js:187
 msgid "Right"
-msgstr ""
+msgstr "Derecha"
 
 #: prefs.js:196
 msgid "Order"
-msgstr ""
+msgstr "Orden"
 
 #: prefs.js:197
 msgid "Place among the other items there; 0 is first"
-msgstr ""
+msgstr "Lugar entre los demás elementos de esa zona; 0 es el primero"
 
 #: prefs.js:209
 msgid "Show on All Workspaces"
-msgstr ""
+msgstr "Mostrar en todas las áreas de trabajo"
 
 #: prefs.js:210
 msgid "Pinned windows follow you across workspaces"
-msgstr ""
+msgstr "Las ventanas fijadas le siguen por las áreas de trabajo"
 
 #: prefs.js:221
 msgid "Press a Shortcut"
-msgstr ""
+msgstr "Pulse un atajo"
 
 #: prefs.js:222
 msgid "Esc to cancel, Backspace to disable"
-msgstr ""
+msgstr "Esc para cancelar, Retroceso para desactivar"
 
 #: prefs.js:228
 msgid "Set Shortcut"
-msgstr ""
+msgstr "Establecer atajo"

@@ -486,7 +486,7 @@ export default class AlwaysOnTopIndicatorExtension extends Extension {
             style: this._borderStyle(),
         });
         // Parent the border onto the window's own actor so it moves, stacks,
-        // and animates (workspace switches, minimise) together with the window
+        // and animates (workspace switches, minimize) together with the window
         // instead of chasing it from the chrome layer.
         windowActor.add_child(actor);
         this._applyGeometry(actor, metaWindow);
