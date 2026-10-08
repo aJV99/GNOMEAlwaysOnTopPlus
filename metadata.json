@@ -3,7 +3,7 @@
     "name": "Always On Top+",
     "description": "Pin windows always-on-top with a shortcut or a top bar button, and mark them with a customizable accent border",
     "shell-version": ["45", "46", "47", "48", "49", "50"],
-    "url": "https://github.com/aJV99/gnome-always-on-top-indicator",
+    "url": "https://github.com/aJV99/GNOMEAlwaysOnTopPlus",
     "settings-schema": "org.gnome.shell.extensions.always-on-top-indicator-maintained",
     "gettext-domain": "always-on-top-indicator@ajv99.github.io"
 }

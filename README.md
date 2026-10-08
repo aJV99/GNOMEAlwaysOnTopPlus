@@ -21,8 +21,8 @@ GNOME Shell extension that pins windows always-on-top and draws a coloured borde
 ### From source
 
 ```bash
-git clone https://github.com/aJV99/gnome-always-on-top-indicator.git
-cd gnome-always-on-top-indicator
+git clone https://github.com/aJV99/GNOMEAlwaysOnTopPlus.git
+cd GNOMEAlwaysOnTopPlus
 make install
 ```
 
