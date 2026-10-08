@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Borders hide while the Activities overview is open and restore when it closes.
 
 ### Changed
+- The repository is now `aJV99/GNOMEAlwaysOnTopPlus`; the extension's `url` and the README clone instructions point there.
 - Interface text now uses one spelling throughout (US English, the GNOME convention for source strings); British spellings are provided by the `en_GB` translation.
 - Preferences: the "Shortcut" group is now "Pinning" and also holds the top bar button and all-workspaces switches.
 - Extension description now mentions pinning as well as the border.
